@@ -75,7 +75,7 @@ This code repository houses the frontend and backend codebases for my Collinson 
 
 ### Activity Scoring System
 
-Each activity is evaluated using specific weather criteria. This structured in a configuration file to create a flexible implementation that could be tweaked in future for more accurate scoring results:
+Each activity is evaluated using specific weather criteria. This is structured in a configuration file to create a flexible implementation that could be tweaked in future for more accurate scoring results:
 
 1. Skiing
 
