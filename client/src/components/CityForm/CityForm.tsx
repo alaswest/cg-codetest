@@ -16,7 +16,7 @@ export function CityForm({ onSubmit }: CityFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className={styles.cityform}>
-      <input type="text" placeholder="City" name="city" />
+      <input type="text" placeholder="City" name="city" required />
       <button type="submit">Search</button>
     </form>
   );
