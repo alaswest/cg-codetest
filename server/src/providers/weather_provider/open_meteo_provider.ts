@@ -12,8 +12,19 @@ interface FindCityByNameResponse {
   }[];
 }
 
+/**
+ * in memory cache for city data if same query is made multiple times.
+ * City lat lng wont change so can be cached indefinitely
+ */
+const localCache = new Map<string, City>();
+
 export const openMeteoProvider: WeatherProvider = {
   fetchCityByName: async function (name: string): Promise<City> {
+    const cachedCity = localCache.get(name);
+    if (cachedCity) {
+      return cachedCity;
+    }
+
     const response = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${name}&count=1&language=en&format=json`
     );
@@ -26,12 +37,16 @@ export const openMeteoProvider: WeatherProvider = {
     if (!data.results?.length) {
       throw new Error(`City "${name}" not found`);
     }
-    return {
+
+    const city = {
       id: data.results[0].id,
       cityName: data.results[0].name,
       latitude: data.results[0].latitude,
       longitude: data.results[0].longitude,
     };
+    localCache.set(name, city);
+
+    return city;
   },
 
   /**

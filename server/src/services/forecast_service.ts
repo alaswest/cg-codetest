@@ -4,24 +4,13 @@ import { Forecast } from '../models/Forecast';
 import { ActivityCriteria } from '../constants/activities';
 import { City } from '../models/City';
 
-/**
- * in memory cache for city data if same query is made multiple times.
- * City lat lng wont change so can be cached indefinitely
- */
-const localCache = new Map<string, City>();
-
 export async function getActivityForecastForCity(
   cityName: string,
   activities: ActivityCriteria[]
 ): Promise<Activity[]> {
   const weatherProvider = getWeatherProvider();
 
-  let city = localCache.get(cityName);
-  if (!city) {
-    city = await weatherProvider.fetchCityByName(cityName);
-    localCache.set(cityName, city);
-  }
-
+  const city = await weatherProvider.fetchCityByName(cityName);
   const forecast = await weatherProvider.fetchForecastByLatLng(
     city.latitude,
     city.longitude
