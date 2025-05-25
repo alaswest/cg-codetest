@@ -125,6 +125,7 @@ The Cursor Editor was used throughout implementation to improve on implementatio
 
 - Autocomplete was used regularly, assisting in repetitive tasks like writing tests, declaring variables and types and import statement management.
 - The chat prompt was also used for basic tasks, such as bootstrapping new files, styling ui components and refactoring.
+- Any entered prompts were written clearly and with precision to avoid any unexpected results. Any generated code was then validated and amended if needed to ensure high quality code is maintained. Cursor provides functionality to accept each the changes it suggests(similarly to when dealing with a merge conflict), which offered easy ability to review.
 
 ### Trade offs
 
