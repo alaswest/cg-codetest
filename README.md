@@ -97,8 +97,6 @@ Each activity is evaluated using specific weather criteria. This is structured i
 
 4. Indoor Sightseeing
    - Scored inversely to outdoor conditions
-   - Higher scores during inclement weather
-   - Serves as a reliable alternative when outdoor activities are unsuitable
 
 ## Development Approach
 
